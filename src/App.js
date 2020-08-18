@@ -6,7 +6,7 @@ const Todo = (props) => (
   <li>
     <input type="checkbox" />
     <button>delete</button>
-    <span>{props.text}</span>
+    <span>{props.todo.text}</span>
   </li>
 );
 
@@ -18,10 +18,18 @@ export default class App extends React.Component {
     };
   }
 
+  addTodo() {
+    const text = prompt("TODO text goes here");
+    this.setState({
+      todos: [...this.state.todos, { text: text }]
+    });
+  }
+
   render() {
     return (
       <div className="App">
         <h1> TODO App </h1>
+        <button onClick={() => this.addTodo()}>Add TODO</button>
         <ul>
           {this.state.todos.map((todo) => (
             <Todo todo={todo} />
