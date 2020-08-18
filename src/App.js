@@ -50,6 +50,11 @@ export default class App extends React.Component {
     return (
       <div className="App">
         <h1> TODO App </h1>
+        <p>TODOs count: {this.state.todos.length}</p>
+        <p>
+          count of done:{" "}
+          {this.state.todos.filter((todo) => todo.checked).length}
+        </p>
         <button onClick={() => this.addTodo()}>Add TODO</button>
         <ul>
           {this.state.todos.map((todo) => (
